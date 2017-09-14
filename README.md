@@ -26,6 +26,7 @@ const options = {
   projection: Number || String // An EPSG code, an OGC WKT or an ESRI WKT used to convert geometry
   toEsri: Boolean // return Esri feature collection
   geometryPrecision: Number // number of digits to appear after decimal point for geometry
+  esri: Boolean // set to true in order to pass Esri geometries as input
   classification: Object // GeoJSON or geoservices classification Object
 }
 winnow.query(features, options)
@@ -67,7 +68,7 @@ Specifies the relationship between the passed-in geometry and the features in th
 - ST_Contains: Features in the data must completely contain the passed-in geometry
 - ST_Intersects: Features in the data must intersect the passed-in geometry
 
-Can also specify the esri-style predicates `esriSpatialRelWithin, esriSpatialRelContains, esriSpatialRelIntersects`
+Can also specify esri-style predicates `esriSpatialRelWithin, esriSpatialRelContains, esriSpatialRelIntersects`
 
 ### `fields`
 An array that specifies fields should be returned from each features properties or attributes. Will also accept a comma-delimited string.
@@ -147,6 +148,9 @@ e.g.
 
 ### `geometryPrecision`
 A number for geometry precision. Geometry values will be truncated to the supplied decimal place.
+
+### `esri`
+Indicates whether the input features are Esri geometries or whether they are GeoJSON. Default is `false`.
 
 ### `classification`
 An object for classification aggregation. Classification ouputs an array of breaks on features. There are two supported classification types: _Class Breaks_ and _Unique Value_. Classification supports input from FeatureServer's [generateRenderer](https://github.com/FeatureServer/FeatureServer#generateRenderer) _classificationDef_.

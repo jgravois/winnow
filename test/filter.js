@@ -52,6 +52,14 @@ test('With the toEsri option and a null geometry', t => {
   run('nogeom', options, 100, t)
 })
 
+test('With the toEsri option and an empty geometry', t => {
+  const options = {
+    toEsri: true,
+    where: "string = 'foobar'"
+  }
+  run('null-geometry', options, 1, t)
+})
+
 test('With a field with a space', t => {
   const options = {
     where: '"total precip" > 1'
